@@ -1,4 +1,4 @@
-#!/usr/vbin/env python3
+#!/usr/bin/env python3
 """Authentication class for the API"""
 
 from flask import Flask, request
