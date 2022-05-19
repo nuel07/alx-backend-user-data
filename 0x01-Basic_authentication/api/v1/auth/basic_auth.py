@@ -30,9 +30,9 @@ class BasicAuth(Auth):
         if base64_authorization_header and type(
                     base64_authorization_header) == str:
             try:
-                x = base64_authorization_header.encode('utf-8')
-                base = base64.b64decode(x)
-                return base.decode('utf-8')
+                encded = base64_authorization_header.encode('utf-8')
+                dcded = base64.b64decode(encded)
+                return dcded.decode('utf-8')
             except Exception:                
                 return None
             
@@ -42,9 +42,9 @@ class BasicAuth(Auth):
         ''' returns the user email and the password '''
         creds = decoded_base64_authorization_header
         if creds and type(creds) == str and ":" in creds:
-            mail = creds.split(':')[0]
-            password = "".join(creds.split(':', 1)[1:])
-            return(mail, password)        
+            usr_email = creds.split(':')[0]
+            usr_passwd = "".join(creds.split(':', 1)[1:])
+            return(usr_email, usr_passwd)        
         return(None, None)
     
 
