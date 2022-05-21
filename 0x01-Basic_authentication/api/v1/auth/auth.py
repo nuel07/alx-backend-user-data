@@ -19,15 +19,15 @@ class Auth:
         if path is None or excluded_paths is None:
             return True
         path = path + '/' if path[-1] != '/' else path
-        wildcard = any(rex.endswith("*") for rex in excluded_paths)
+        wildcard = any(req.endswith("*") for req in excluded_paths)
         if wildcard is None:
             if path in excluded_paths:
                 return False
-        for rex in excluded_paths:
-            if rex[-1] == '*':
-                if path.startswith(rex[:-1]):
+        for req in excluded_paths:
+            if req[-1] == '*':
+                if path.startswith(req[:-1]):
                     return False
-            if rex == path:
+            if req == path:
                 return False
         return True
 
