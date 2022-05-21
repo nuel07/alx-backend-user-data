@@ -27,8 +27,8 @@ class Auth:
             if required[-1] == '*':
                 if path.startswith(required[:-1]):
                     return False
-                if required == path:
-                    return False
+            if required == path:
+                return False
         return True
 
     def authorization_header(self, request=None) -> str:
