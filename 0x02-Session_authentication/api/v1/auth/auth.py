@@ -9,7 +9,7 @@ import os
 class Auth:
     """an authentication class"""
 
-    def require_auth(self, path:str, excluded_paths: List[str])-> bool:
+    def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """returns a boolean"""
         if path is None:
             return True
@@ -24,7 +24,6 @@ class Auth:
             return False
         return True
 
-
     def authorization_header(self, request=None) -> str:
         """return the value of the header request"""
         if request is None:
@@ -32,7 +31,6 @@ class Auth:
         if "Authorization" not in request.headers:
             return None
         return request.headers["Authorization"]
-
 
     def current_user(self, request=None) -> TypeVar('User'):
         """returns None"""
