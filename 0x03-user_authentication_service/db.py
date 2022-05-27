@@ -8,6 +8,8 @@ from sqlalchemy.orm.session import Session
 
 from user import Base
 User = __import__('user').User
+from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 
 
 class DB:
@@ -36,4 +38,15 @@ class DB:
         new_user = User(email=email, hashed_password=hashed_password)
         self._session.add(new_user)
         self._session.commit()
+        return new_user
+
+    def find_user_by(self, **kwargs) -> User:
+        """Return first row found in users table
+        """
+        try:
+            new_user = self._session.query(User).filter_by(**kwargs).first()
+        except TypeError:
+            raise InvalidRequestError
+        if not new_user:
+            raise NoResultFound
         return new_user
