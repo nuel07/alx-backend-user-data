@@ -50,3 +50,13 @@ class DB:
         if not new_user:
             raise NoResultFound
         return new_user
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """Update user
+        """
+        new_usr = self.find_user_by(id=user_id)
+        attrbtes = {k:v for k, v in kwargs.items() if v}
+        for key in kwargs.keys():
+            if key not in User.__table__.columns.keys():
+                raise ValueError
+        self._session.commit()
