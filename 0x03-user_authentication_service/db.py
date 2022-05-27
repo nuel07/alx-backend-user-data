@@ -32,7 +32,6 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    
     def add_user(self, email: str, hashed_password: str) -> User:
         """Returns user object
         """
@@ -40,7 +39,6 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
-
 
     def find_user_by(self, **kwargs) -> User:
         """Return first row found in users table
@@ -52,7 +50,6 @@ class DB:
         if not new_user:
             raise NoResultFound
         return new_user
-
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """Update user
