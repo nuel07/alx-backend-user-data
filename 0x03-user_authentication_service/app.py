@@ -5,13 +5,15 @@ from flask import Flask, jsonify, request, abort, redirect
 from auth import Auth
 
 app = Flask(__name__)
-app.url_map.strict_slashes=False
+app.url_map.strict_slashes = False
 AUTH = Auth()
+
 
 @app.route('/', methods=['GET'])
 def hello():
     """return JSON payload"""
     return jsonify({"message": "Bienvenue"})
+
 
 @app.route('/users', methods=['POST'])
 def users() -> str:
@@ -24,6 +26,7 @@ def users() -> str:
     except Exception:
         return jsonify({"message": "email already registered"}), 400
     abort(400)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
