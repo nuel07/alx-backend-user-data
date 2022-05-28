@@ -11,6 +11,7 @@ from sqlalchemy.exc import InvalidRequestError
 from user import Base
 User = __import__('user').User
 
+
 class DB:
     """DB class
     """
