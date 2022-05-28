@@ -11,6 +11,7 @@ def _hash_password(password: str) -> str:
     """Returns salted hash of input password"""
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
+
 def _generate_uuid() -> str:
     """return string representation of uuid"""
     return str(uuid.uuid4())
@@ -38,6 +39,7 @@ class Auth:
         try:
             new_user = self._db.find_user_by(email=email)
             if new_user:
-                return bcrypt.checkpw(password.encode(), new_user.hashed_password)
+                return bcrypt.checkpw(password.encode(),
+                                      new_user.hashed_password)
         except NoResultFound:
             return False
