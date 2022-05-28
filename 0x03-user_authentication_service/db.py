@@ -5,12 +5,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
-
-from user import Base
-User = __import__('user').User
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.exc import InvalidRequestError
 
+from user import Base
+User = __import__('user').User
 
 class DB:
     """DB class
@@ -55,7 +54,7 @@ class DB:
         """Update user
         """
         new_usr = self.find_user_by(id=user_id)
-        attrbtes = {k:v for k, v in kwargs.items() if v}
+        attrbtes = {k: v for k, v in kwargs.items() if v}
         for key in kwargs.keys():
             if key not in User.__table__.columns.keys():
                 raise ValueError
