@@ -51,6 +51,6 @@ class Auth:
         except NoResultFound:
             return "User doesn't exist"
         else:
-            session_id = _generate_uuid()
-            self._db.update_user(new_user.id, session_id=session_id)
-            return session_id
+            new_user.session_id = _generate_uuid()
+            self._db.update_user(new_user.id, session_id=new_user.session_id)
+            return new_user.session_id
