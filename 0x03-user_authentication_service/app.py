@@ -84,7 +84,7 @@ def update_password() -> str:
     """update password endpoint"""
     email = request.form.get('email')
     reset_token = request.form.get('reset_token')
-    new_password = request.from.get('new_password')
+    new_password = request.form.get('new_password')
     try:
         AUTH.update_password(reset_token, new_password)
         return jsonify({"email": email, "message": "Password updated"}), 200
