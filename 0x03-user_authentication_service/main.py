@@ -56,16 +56,15 @@ def log_out(session_id: str) -> None:
 
 def reset_password_token(email: str) -> str:
     """test password reset_token"""
-    resp = requests.post('http://localhost:5000/reset_password',
-                        data={"email": email})
+    resp = requests.post('http://localhost:5000/reset_password', data={
+        "email": email})
     assert resp.status_code == 200
     return resp.json().get('reset_token')
 
 
 def update_password(email: str, reset_token: str, new_password: str) -> None:
     """test update of password with reset_token"""
-    resp = requests.put('http://localhost:5000/reset_password',
-                       data={
+    resp = requests.put('http://localhost:5000/reset_password', data={
                            "email": email,
                            "reset_token": reset_token,
                            "new_password": new_password})
