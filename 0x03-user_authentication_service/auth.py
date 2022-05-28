@@ -79,5 +79,4 @@ class Auth:
         except NoResultFound:
             raise ValueError
         the_user.reset_token = _generate_uuid()
-        self._db.update_user(user.id, reset_token=the_user.reset_token)
         return the_user.reset_token
