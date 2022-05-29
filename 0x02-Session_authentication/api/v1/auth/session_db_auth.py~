@@ -1,0 +1,4 @@
+#!/usr/bin/env python3
+"""sessions database module"""
+
+from api.v1.auth.session_exp_auth import SessionExpAuth
