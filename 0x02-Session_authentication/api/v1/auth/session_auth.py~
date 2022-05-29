@@ -1,9 +1,0 @@
-#!/usr/bin/env python3
-""" Session authentication mechanism """
-
-Auth = __import__('auth').Auth
-
-
-class SessionAuth(Auth):
-    """ Session authentication class """
-    
